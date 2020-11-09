@@ -13,10 +13,11 @@ class Commit:
 
     @retry(ValueError)
     def decide_commit_type(self) -> str:
-        print("0 [add]    : ファイルの追加")
-        print("1 [update] : コード・機能の追加")
-        print("2 [fix]    : コード・機能の修正")
-        print("3 [delete] : ファイルの削除")
+        print("0 [add]     : ファイルの追加")
+        print("1 [update]  : コード・機能の追加")
+        print("2 [fix]     : コード・機能の修正")
+        print("3 [refactor]: コードのリファクタリング")
+        print("4 [delete]  : ファイルの削除")
         print("変更の種類を選択してください : ", end="")
         commit_type = int(input())
         if commit_type == 0:
@@ -26,6 +27,8 @@ class Commit:
         elif commit_type == 2:
             return "[fix]"
         elif commit_type == 3:
+            return "[refactor]"
+        elif commit_type == 4:
             return "[delete]"
         else:
             print("ERROR! 値が不正です")
