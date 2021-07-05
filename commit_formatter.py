@@ -69,7 +69,7 @@ class Commit:
         if not id:
             return '';
         else:
-            return f'#{id}:';
+            return f'{id} : ';
 
 
 if __name__ == "__main__":
