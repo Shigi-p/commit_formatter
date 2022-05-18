@@ -14,9 +14,10 @@ echo "8 [emoji]   : git emoji"
 
 while :
 do
-    echo -n "変更の種類を選択してください : "
+    # https://atmarkit.itmedia.co.jp/ait/articles/1811/28/news003.html
+    read -n1 -p "変更の種類を選択してください : " input_commit_type
 
-    read input_commit_type
+    echo;
 
     case "$input_commit_type" in 
         "1" )   input_commit_type=0
@@ -40,9 +41,7 @@ do
     esac
 done
 
-echo -n '変更したファイル名、変更箇所等を入力してください(ない場合は改行) : '
-
-read input_changed_file
+read -e -p '変更したファイル名、変更箇所等を入力してください(ない場合は改行) : ' input_changed_file
 
 # https://qiita.com/rockhopper/items/bee538ab4c6aabcd6b0f
 # https://en.wikibooks.org/wiki/Regular_Expressions/POSIX-Extended_Regular_Expressions
@@ -54,9 +53,7 @@ fi
 
 while :
 do
-    echo -n '作業内容のまとめ・作業理由等を入力してください : '
-
-    read input_summary
+    read -e -p '作業内容のまとめ・作業理由等を入力してください : ' input_summary
 
     # https://qiita.com/rockhopper/items/bee538ab4c6aabcd6b0f
     # https://en.wikibooks.org/wiki/Regular_Expressions/POSIX-Extended_Regular_Expressions
@@ -76,9 +73,11 @@ else
     echo commit_message
 fi
 
-echo ''
+echo;
 
 git status
+
+echo;
 
 echo $commit_message
 
