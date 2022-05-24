@@ -32,7 +32,7 @@ source ~/.bashrc
 
 ```shell script
 chmod +x commit_formatter.sh
-echo "alias gcommit=\"sh `pwd`/commit_formatter.py\"" >> ~/.zshrc
+echo "alias gcommit=\"sh `pwd`/commit_formatter.sh\"" >> ~/.zshrc
 source ~/.zshrc
 ```
 
