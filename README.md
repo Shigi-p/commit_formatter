@@ -1,35 +1,47 @@
 # commit_formatter
-pythonでコミットメッセージのフォーマットを行うツールを作りました
+
+## about commit formatter
+
+~~python でコミットメッセージのフォーマットを行うツールを作りました~~
+
+どの環境でもセットアップなしに動いてほしくなってきたので、bash だろうが zsh だろうが fish だろうが動く shell バージョンを追加
+
+```
+[commit_prefix] (changed_file_name) changed description
+```
+
+こんな形にコミットを整形してくれます
+
+git emoji を使うのがお好みな方は`emoji_list.txt`を参考に`local_emoji_list.txt`ファイルを作成してください
+
+`01 emoji :emoji_name: description for emoji`
+
+みたいなフォーマットで入れれば動くはずです(多分)
 
 ## セットアップ
 
-```shell script 
-pip install -r requirements.txt
-chmod +x setup_commit_formatter.sh
-source ./setup_commit_formatter.sh
-```
-
-コマンドプロンプトとかの場合は`pip install`の部分を`py -m pip`とかでなんとかしてください
-
-多分これすることで`gcommmit`で使用可能  
-感覚的には`git commit`の感覚で使ってもらうと良いかも  
-
-## 使用例
+### for bash
 
 ```shell script
-git add file1 file2
-gcommit
-0 [add]    : ファイルの追加
-1 [update] : コード・機能の追加
-2 [fix]    : コード・機能の修正
-3 [delete] : ファイルの削除
-変更の種類を選択してください : 0
-サマリーを入力してください : summary
-詳細・理由を入力してください(入力しない場合はなし) : detail
-[add] summary
-
-detail 
+chmod +x commit_formatter.sh
+echo "alias gcommit=\"sh `pwd`/commit_formatter.sh\"" >> ~/.bashrc
+source ~/.bashrc
 ```
 
-`git add`してから`git commit`みたいな感覚でやって`git push`してください  
-環境がbashじゃなくてgitbashで動くかどうかはわからないので試してみてください  
+### for zsh
+
+```shell script
+chmod +x commit_formatter.sh
+echo "alias gcommit=\"sh `pwd`/commit_formatter.py\"" >> ~/.zshrc
+source ~/.zshrc
+```
+
+### for fish
+
+```shell script
+chmod +x commit_formatter.sh
+echo "abbr -a gcommit 'sh `pwd`/commit_formatter.sh'" >> ~/.config/fish/config.fish
+source ~/.config/fish/config.fish
+```
+
+`git add`してから`git commit`みたいな感覚でやって`git push`してください

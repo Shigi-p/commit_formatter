@@ -1,7 +1,5 @@
-#!/usr/bin/env bash
-
-
-commit_type=("[add]" "[update]" "[fix]" "[refactor]" "[document]" "[style]" "[delete]" "[emoji]")
+#!/bin/sh
+commit_type=("[add]" "[update]" "[fix]" "[refactor]" "[document]" "[style]" "[remove]" "[emoji]")
 
 echo "1 [add]     : ファイルの追加"
 echo "2 [update]  : コード・機能の追加"
@@ -9,7 +7,7 @@ echo "3 [fix]     : コード・機能の修正"
 echo "4 [refactor]: コードのリファクタリング"
 echo "5 [document]: ドキュメント系の編集 "
 echo "6 [style]   : コードの動作に影響しない整形等"
-echo "7 [delete]  : ファイルの削除"
+echo "7 [remove]  : ファイルの削除"
 echo "8 [emoji]   : git emoji"
 
 while :
@@ -20,24 +18,57 @@ do
     echo;
 
     case "$input_commit_type" in 
-        "1" )   input_commit_type=0
+        1 )   commit_prefix=${commit_type[0]}
                 break;;
-        "2" )   input_commit_type=1
+        2 )   commit_prefix=${commit_type[1]}
                 break;;
-        "3" )   input_commit_type=2
+        3 )   commit_prefix=${commit_type[2]}
                 break;;
-        "4" )   input_commit_type=3
+        4 )   commit_prefix=${commit_type[3]}
                 break;;
-        "5" )   input_commit_type=4
+        5 )   commit_prefix=${commit_type[4]}
                 break;;
-        "6" )   input_commit_type=5
+        6 )   commit_prefix=${commit_type[5]}
                 break;;
-        "7" )   input_commit_type=6
+        7 )   commit_prefix=${commit_type[6]}
                 break;;
-        "8" )   input_commit_type=7
+        8 )   echo;
+                emoji_list=()
+
+                FILE="local_emoji_list.txt"
+
+                if [ -e $FILE ]; then
+                    while read line
+                    do
+                        echo $line
+                        emoji_type=`echo $line | grep -Eo :.*:`
+                        emoji_list+=($emoji_type)
+                    done < local_emoji_list.txt
+                else
+                    while read line
+                    do
+                        echo $line
+                        emoji_type=`echo $line | grep -Eo :.*:`
+                        emoji_list+=($emoji_type)
+                    done < emoji_list.txt
+                fi
+
+                while :
+                do
+                    echo;
+
+                    read -p "emojiの種類を選択してください : " input_emoji_type
+
+                    echo;
+
+                    if (( input_emoji_type )); then
+                        commit_prefix=${emoji_list[input_emoji_type - 1]}
+                        break
+                    fi
+                done
                 break;;
-        # https://qiita.com/ko1nksm/items/095bdb8f0eca6d327233
-        * ) echo -e "\033[31m[ERROR!]\033[m 正しい値を入力してください" ;;
+            # https://qiita.com/ko1nksm/items/095bdb8f0eca6d327233
+            * ) echo -e "\033[31m[ERROR!]\033[m 正しい値を入力してください" ;;
     esac
 done
 
@@ -66,10 +97,11 @@ do
     fi
 done
 
+# if [ ]; then;
 if [ "$input_changed_file" = "" ]; then
-    commit_message="${commit_type[$input_commit_type]} $input_summary"
+    commit_message="${commit_prefix} $input_summary"
 else
-    commit_message="${commit_type[$input_commit_type]} $input_changed_file $input_summary"
+    commit_message="${commit_prefix} $input_changed_file $input_summary"
     echo commit_message
 fi
 

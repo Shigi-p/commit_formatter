@@ -1,0 +1,17 @@
+ 1 🐛  :bug: Bugfix / バグ修正
+ 2 ✨  :sparkles: New Feature / 機能実装
+ 3 🚧  :construction: WIP / 進行中
+ 4 🔖  :bookmark: Version tag / バージョンタグ
+ 5 👍  :+1: Improve a feature 
+ 6 🚀  :rocket: Improve performance / パフォーマンス改善
+ 7 ✅  :white_check_mark: Test / テスト記述
+ 8 ♻️  :recycle: Refactoring / リファクタリング
+ 9 👮  :cop: Security / セキュリティ関連の改善
+10 🔥  :fire: Remove / 不要な機能・コードの削除
+11 🎉  :tada: Achieve a milestone / マイルストーン達
+12 🔧  :wrench: Configuration / 設定ファイル修正
+13 💚  :green_heart: CI / CI修正
+14 👕  :shirt: Lint / Lintエラー修正
+15 📝  :memo: Documentation / ドキュメント作業
+16 📦  :package: Dependencies / dependency追加・修正・アップデート
+17 📷  :camera: Update Screenshots / スクリーンショットアップデート
