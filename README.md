@@ -2,17 +2,13 @@
 
 ## about commit formatter
 
-~~python でコミットメッセージのフォーマットを行うツールを作りました~~
-
-どの環境でもセットアップなしに動いてほしくなってきたので、bash だろうが zsh だろうが fish だろうが動く shell バージョンを追加
-
 ```
 [commit_prefix] (changed_file_name) changed description
 ```
 
 こんな形にコミットを整形してくれます
 
-git emoji を使うのがお好みな方は`emoji_list.txt`を参考に`local_emoji_list.txt`ファイルを作成してください
+自前の git emoji を使うのがお好みな方は`local_emoji_list.txt`ファイルを作成し、`emoji_list.txt`を参考に emoji のリストを作成してください
 
 `01 emoji :emoji_name: description for emoji`
 
