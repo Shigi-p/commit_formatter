@@ -35,7 +35,7 @@ do
         8 )   echo;
                 emoji_list=()
 
-                FILE="./local_emoji_list.txt"
+                FILE="$(dirname $0)/local_emoji_list.txt"
 
                 if [ -e $FILE ]; then
                     while read line
@@ -43,14 +43,14 @@ do
                         echo $line
                         emoji_type=`echo $line | grep -Eo :.*:`
                         emoji_list+=($emoji_type)
-                    done < ./local_emoji_list.txt
+                    done < $(dirname $0)/local_emoji_list.txt
                 else
                     while read line
                     do
                         echo $line
                         emoji_type=`echo $line | grep -Eo :.*:`
                         emoji_list+=($emoji_type)
-                    done < ./emoji_list.txt
+                    done < $(dirname $0)/emoji_list.txt
                 fi
 
                 while :

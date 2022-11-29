@@ -20,7 +20,7 @@
 
 ```shell script
 chmod +x commit_formatter.sh
-echo "alias gcommit=\"sh `pwd`/commit_formatter.sh\"" >> ~/.bashrc
+echo "alias gc=\"sh `pwd`/commit_formatter.sh\"" >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -28,7 +28,7 @@ source ~/.bashrc
 
 ```shell script
 chmod +x commit_formatter.sh
-echo "alias gcommit=\"sh `pwd`/commit_formatter.sh\"" >> ~/.zshrc
+echo "alias gc=\"sh `pwd`/commit_formatter.sh\"" >> ~/.zshrc
 source ~/.zshrc
 ```
 
@@ -36,7 +36,7 @@ source ~/.zshrc
 
 ```shell script
 chmod +x commit_formatter.sh
-echo "abbr -a gcommit 'sh `pwd`/commit_formatter.sh'" >> ~/.config/fish/config.fish
+echo "abbr -a gc 'sh `pwd`/commit_formatter.sh'" >> ~/.config/fish/config.fish
 source ~/.config/fish/config.fish
 ```
 
