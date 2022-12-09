@@ -86,8 +86,6 @@ while :
 do
     read -e -p '作業内容のまとめ・作業理由等を入力してください : ' input_summary
 
-    # https://qiita.com/rockhopper/items/bee538ab4c6aabcd6b0f
-    # https://en.wikibooks.org/wiki/Regular_Expressions/POSIX-Extended_Regular_Expressions
     if [[ ${input_summary} =~ ^[[:space:]]*$ ]]; then
         # https://qiita.com/ko1nksm/items/095bdb8f0eca6d327233
         echo -e "\033[31m[ERROR!]\033[m 作業内容のまとめ・作業理由等が入力されていません！"
@@ -97,13 +95,20 @@ do
     fi
 done
 
-# if [ ]; then;
-if [ "$input_changed_file" = "" ]; then
-    commit_message="${commit_prefix} $input_summary"
+read -e -p '作業内容の理由・Issue/PRの番号・チケット番号を入力してください（ない場合は空行） : ' input_description
+
+if [[ ${input_description} =~ ^[[:space:]]*$ ]]; then
+    input_description=''
 else
-    commit_message="${commit_prefix} $input_changed_file $input_summary"
-    echo commit_message
+    input_description=$input_description
 fi
+
+if [ "$input_description" = "" ]; then
+    commit_message="${commit_prefix} ${input_changed_file} ${input_summary}"
+else
+    commit_message="${commit_prefix} ${input_changed_file} ${input_summary}\n\n${input_description}"
+fi
+
 
 echo;
 
