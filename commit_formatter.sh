@@ -106,7 +106,9 @@ fi
 if [ "$input_description" = "" ]; then
     commit_message="${commit_prefix} ${input_changed_file} ${input_summary}"
 else
-    commit_message="${commit_prefix} ${input_changed_file} ${input_summary}\n\n${input_description}"
+    commit_message="${commit_prefix} ${input_changed_file} ${input_summary}
+    
+${input_description}"
 fi
 
 
